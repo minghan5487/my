@@ -24,6 +24,9 @@
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--background-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         header {
@@ -77,6 +80,7 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 2rem;
+            flex: 1;
         }
 
         .content-section {
@@ -106,6 +110,17 @@
                 width: 100px;
                 height: 100px;
             }
+        }
+
+        footer {
+            background-color: var(--background-color);
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        footer img {
+            display: block;
+            margin: 0 auto;
         }
     </style>
 </head>
@@ -197,7 +212,7 @@
         </section>
     </main>
     <footer>
-        <p><img src="感謝.gif" alt="感謝.GIF" width="300"></p>
+        <img src="感謝.gif" alt="感謝.GIF" width="300">
     </footer>
     <script>
         function setActiveSection(sectionId) {
