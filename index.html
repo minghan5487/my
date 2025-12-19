@@ -68,6 +68,11 @@
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
             background-color: var(--primary-color);
         }
+            .circle.active-circle {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.25);
+        }
         main {
             max-width: 800px;
             margin: 0 auto;
@@ -222,31 +227,30 @@
     </main>
     <footer>
         <img src="感謝.gif" alt="感謝.GIF" width="300">
-         <script>
+<script>
     function setActiveSection(sectionId) {
-        const sections = document.querySelectorAll('.content-section');
-        sections.forEach(section => {
-            section.classList.remove('active');
-        });
-
-        const target = document.getElementById(sectionId);
-        if (target) {
-            target.classList.add('active');
-        }
-        const circles = document.querySelectorAll('.circle');
-        circles.forEach(circle => {
-            circle.classList.remove('active-circle');
-        });
-
-        const activeBtn = document.querySelector(
-            `.circle[data-target="${sectionId}"]`
-        );
-        if (activeBtn) {
-            activeBtn.classList.add('active-circle');
-        }
+    const sections = document.querySelectorAll('.content-section');
+    sections.forEach(section => {
+        section.classList.remove('active');
+    });
+    const target = document.getElementById(sectionId);
+    if (target) {
+        target.classList.add('active');
+        target.scrollIntoView({ behavior: 'smooth' }); 
     }
-    setActiveSection('about');
-    </script>
+    const circles = document.querySelectorAll('.circle');
+    circles.forEach(circle => {
+        circle.classList.remove('active-circle');
+    });
+    const activeBtn = document.querySelector(
+        `.circle[data-target="${sectionId}"]`
+    );
+    if (activeBtn) {
+        activeBtn.classList.add('active-circle');
+    }
+}
+setActiveSection('about');
+</script>
     </footer>
 </body>
 </html>
