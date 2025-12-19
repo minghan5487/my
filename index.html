@@ -63,23 +63,30 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             cursor: pointer;
         }
-        .circle:hover {
+            .circle:hover {
             transform: translateY(-5px);
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
             background-color: var(--primary-color);
+        }
+            .job-title {
+            color: #c0392b;
+            border-left: 5px solid #c0392b;
+            padding-left: 10px;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
         }
             .circle.active-circle {
             background-color: var(--primary-color);
             transform: translateY(-5px);
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.25);
         }
-        main {
+            main {
             max-width: 800px;
             margin: 0 auto;
             padding: 2rem;
             flex: 1;
         }
-        .content-section {
+            .content-section {
             display: none;
             background-color: white;
             border-radius: 8px;
@@ -87,12 +94,12 @@
             margin-bottom: 2rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .content-section.active {
+            .content-section.active {
             display: block;
         }
-        @media (max-width: 768px) {
-            body {
-                font-size: 14px;
+            @media (max-width: 768px) {
+                body {
+                    font-size: 14px;
             }
             header img {
                 width: 150px;
@@ -103,14 +110,14 @@
                 height: 100px;
             }
         }
-        footer {
-            background-color: var(--background-color);
-            text-align: center;
-            padding: 1rem 0;
+            footer {
+                background-color: var(--background-color);
+                text-align: center;
+                padding: 1rem 0;
         }
-        footer img {
-            display: block;
-            margin: 0 auto;
+            footer img {
+                display: block;
+                margin: 0 auto;
         }
     </style>
 </head>
@@ -200,25 +207,25 @@
             </ul>
             <h3>【第二份工作-在緯穎科技擔任失效分析工程師的經歷】</h3>
             <ul>
-                <p>網路架設與維護</p>
+                <h4 class="job-title">網路架設與維護</h4>
                 <p>迄今已執行超過 11 個專案的網路架設與維運</p>
                 <p>使用 Cisco / Edge-Core / Wedge100/400 等設備進行路由器與交換器設定</p>
                 <p>負責跨部門專案網路規劃、路徑設計與系統連線測試</p>
                 <p>日常維護測試環境網路狀態，協助除錯與穩定性改善</p>
                     
-                <p>測試及驗證</p>
+                <h5 class="job-title">測試及驗證</h5>
                 <p>支援各專案測試流程，排除包含「測試Fail」、「測試不跑」等異常狀況</p>
                 <p>使用 Linux 與 Python 修改各專案的硬體設定與 Test Code</p>
                 <p>與RD及LLM團隊進行 FPGA、NIC card 等硬體與系統驗證</p>
                 <p>參與BFT與ST階段環境架設與測試調整</p>
 
-                <p>個人專案與維修改善</p>
+                <h6 class="job-title">個人專案與維修改善</h6>
                 <p>主導與建置專案機台，從架設、測試、數據回報至客戶驗收全程執行</p>
                 <p>結合電表與測試工具提升維修良率，有效降低PCB報廢率</p>
                 <p>協助專案退件進行初步驗證與問題排除（FW相容性、硬體診斷等）</p>
                 <p>定期與客戶報告維修狀況與分析結果</p>
 
-                <p>跨部門協調與特殊經歷</p>
+                <h6 class="job-title">跨部門協調與特殊經歷</h6>
                 <p>參與兩次部門遷移專案，擔任現場核心協調角色</p>
                 <p>負責跨單位溝通、人力調度與網路環境建置</p>
                 <p>現場領導搬遷流程與即時處理突發問題，確保作業順利完成</p>
