@@ -110,13 +110,17 @@
     </style>
 </head>
 <body>
+    <header>
         <img src="我.jfif" alt="吳明翰" id="profile-image">
         <h1>吳明翰的個人網站</h1>
     </header>
-    <div class="circle-container">
-        <div class="circle" onclick="setActiveSection('about')">個人介紹</div>
-        <div class="circle" onclick="setActiveSection('bio')">自傳</div>
-        <div class="circle" onclick="setActiveSection('experience')">工作經驗</div>
+        <div class="circle-container">
+        <div class="circle active-circle" data-target="about"
+         onclick="setActiveSection('about')">個人介紹</div>
+        <div class="circle" data-target="bio"
+         onclick="setActiveSection('bio')">自傳</div>
+        <div class="circle" data-target="experience"
+         onclick="setActiveSection('experience')">工作經驗</div>
         <a href="論文完整版.pdf" class="circle" target="_blank">碩士論文</a> 
         <a href="大學專題.pdf" class="circle" target="_blank">大學專題</a>
         <a href="front page.html" class="circle" target="_blank">阿賢的家</a>
@@ -218,6 +222,31 @@
     </main>
     <footer>
         <img src="感謝.gif" alt="感謝.GIF" width="300">
+         <script>
+    function setActiveSection(sectionId) {
+        const sections = document.querySelectorAll('.content-section');
+        sections.forEach(section => {
+            section.classList.remove('active');
+        });
+
+        const target = document.getElementById(sectionId);
+        if (target) {
+            target.classList.add('active');
+        }
+        const circles = document.querySelectorAll('.circle');
+        circles.forEach(circle => {
+            circle.classList.remove('active-circle');
+        });
+
+        const activeBtn = document.querySelector(
+            `.circle[data-target="${sectionId}"]`
+        );
+        if (activeBtn) {
+            activeBtn.classList.add('active-circle');
+        }
+    }
+    setActiveSection('about');
+    </script>
     </footer>
 </body>
 </html>
