@@ -11,13 +11,11 @@
             --text-color: #333;
             --background-color: #ecf0f1;
         }
-
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-
         body {
             font-family: DFKai-SB, 標楷體, serif; 
             font-size: 16px;
@@ -28,7 +26,6 @@
             flex-direction: column;
             min-height: 100vh;
         }
-
         header {
             background-color: var(--primary-color);
             color: white;
@@ -37,7 +34,6 @@
             position: relative;
             overflow: hidden;
         }
-
         header img {
             width: 200px;
             height: 200px;
@@ -45,7 +41,6 @@
             border: 5px solid white;
             margin-bottom: 1rem;
         }
-
         .circle-container {
             display: flex;
             justify-content: center;
@@ -53,7 +48,6 @@
             gap: 1rem;
             padding: 2rem 0;
         }
-
         .circle {
             width: 120px;
             height: 120px;
@@ -69,20 +63,17 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             cursor: pointer;
         }
-
         .circle:hover {
             transform: translateY(-5px);
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
             background-color: var(--primary-color);
         }
-
         main {
             max-width: 800px;
             margin: 0 auto;
             padding: 2rem;
             flex: 1;
         }
-
         .content-section {
             display: none;
             background-color: white;
@@ -91,33 +82,27 @@
             margin-bottom: 2rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-
         .content-section.active {
             display: block;
         }
-
         @media (max-width: 768px) {
             body {
                 font-size: 14px;
             }
-
             header img {
                 width: 150px;
                 height: 150px;
             }
-
             .circle {
                 width: 100px;
                 height: 100px;
             }
         }
-
         footer {
             background-color: var(--background-color);
             text-align: center;
             padding: 1rem 0;
         }
-
         footer img {
             display: block;
             margin: 0 auto;
@@ -139,36 +124,7 @@
     </div>
     <main>
         <section id="about" class="content-section">
-            <h2>關於我</h2>
-            <ul>
-                <p>我叫做吳明翰。</p>
-                <p>大學畢業於私立崑山科技大學，先工作兩年之餘深刻體會自身能力不足選擇進修研究所。</p>
-                <p>研究所畢業於國立高雄科技大學資訊管理學研究所。</p>
-                <p>個性屬於外向，常是團隊中的開心果，擅長人之間的交際，喜歡利用空閒時間瀏覽心理學的相關書籍、也會適當的運動培養自身的心境。</p>
-                <p>思維清晰，具有邏輯思考能力，對於細節的部分會進行自我的要求，樂於勇於挑戰。對待工作認真、負責很願意在團隊與公司中付出努力及貢獻。</p>
-            </ul>
-            <h3>恩師慈訓</h3>
-            <ul>
-                <p>雖然最終的結果非常重要，但在過程中不斷尋找答案的過程，才是主要累積經驗及學習的關鍵。因此我會保持這個信念，繼續讓自己努力的學習新事物。</p>
-            </ul>
-            <h3>專長</h3>
-            <ul>
-                <p>1. 程式語言：Python、Java、C++、C#</p>
-                <p>2. 統計軟體：SPSS、SmartPls</p>
-                <p>3. 擅長工具：Word、Excel、PowerPoint</p>
-                <p>4. 作業系統：Windows 10、Mac OS、MySQL、Linux      }
-        }
 
-        footer {
-            background-color: var(--background-color);
-            text-align: center;
-            padding: 1rem 0;
-        }
-
-        footer img {
-            display: block;
-            margin: 0 auto;
-        }
     </style>
 </head>
 <body>
