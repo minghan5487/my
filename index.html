@@ -1,263 +1,330 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>吳明翰的個人網站</title>
-    <style>
-        :root {
-            --primary-color: #7ac0e6; 
-            --secondary-color: #2c3e50;
-            --text-color: #333;
-            --background-color: #ecf0f1;
-        }
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            font-family: DFKai-SB, 標楷體, serif; 
-            font-size: 16px;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--background-color);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-        header img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            border: 5px solid white;
-            margin-bottom: 1rem;
-        }
-        .circle-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            padding: 2rem 0;
-        }
-        .circle {
-            width: 120px;
-            height: 120px;
-            background-color: var(--secondary-color);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-        }
-            .circle:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-            background-color: var(--primary-color);
-        }
-            .job-title {
-            color: #c0392b;
-            border-left: 5px solid #c0392b;
-            padding-left: 10px;
-            margin-top: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-            .circle.active-circle {
-            background-color: var(--primary-color);
-            transform: translateY(-5px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.25);
-        }
-            main {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-            flex: 1;
-        }
-            .content-section {
-            display: none;
-            background-color: white;
-            border-radius: 8px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-            .content-section.active {
-            display: block;
-        }
-            @media (max-width: 768px) {
-                body {
-                    font-size: 14px;
-            }
-            header img {
-                width: 150px;
-                height: 150px;
-            }
-            .circle {
-                width: 100px;
-                height: 100px;
-            }
-        }
-            footer {
-                background-color: var(--background-color);
-                text-align: center;
-                padding: 1rem 0;
-        }
-            footer img {
-                display: block;
-                margin: 0 auto;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>吳明翰｜測試自動化工程師</title>
+<meta name="description" content="吳明翰｜軟韌體測試工程師，專注測試自動化、資料管線與伺服器 Debug。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f8fa; --surface:#ffffff; --text:#1b1f24; --muted:#5b6470; --line:#e3e6ea;
+  --accent:#0f7b6c; --accent-soft:#e3f3f0; --chip:#f0f2f5;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1216; --surface:#161b21; --text:#e6e9ed; --muted:#98a2ae; --line:#26303a;
+    --accent:#3cc7b0; --accent-soft:#11302b; --chip:#1d242c;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1216; --surface:#161b21; --text:#e6e9ed; --muted:#98a2ae; --line:#26303a;
+  --accent:#3cc7b0; --accent-soft:#11302b; --chip:#1d242c;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Noto Sans TC",system-ui,sans-serif;line-height:1.75;font-size:16px}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px}
+
+nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;gap:12px}
+nav .brand{font-weight:700;color:var(--text)}
+nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0;font-size:14px;overflow-x:auto}
+nav ul a{color:var(--muted)}
+nav ul a:hover{color:var(--text);text-decoration:none}
+
+header.hero{padding:88px 0 64px}
+.hero .tag{display:inline-block;font-size:13px;color:var(--accent);background:var(--accent-soft);padding:4px 10px;border-radius:999px;margin-bottom:18px}
+.hero h1{font-size:clamp(34px,6vw,52px);line-height:1.2;margin:0 0 10px}
+.hero h2{font-size:clamp(18px,3vw,22px);font-weight:500;color:var(--muted);margin:0 0 28px}
+.hero blockquote{margin:0;padding-left:16px;border-left:3px solid var(--accent);color:var(--muted);max-width:640px}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.btn{display:inline-block;padding:10px 18px;border-radius:8px;border:1px solid var(--line);color:var(--text);background:var(--surface);font-size:15px}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn:hover{text-decoration:none;border-color:var(--accent)}
+
+section{padding:56px 0;border-top:1px solid var(--line)}
+section h3{font-size:14px;letter-spacing:.12em;color:var(--accent);margin:0 0 8px}
+section h4.title{font-size:26px;margin:0 0 28px}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px}
+.stat b{display:block;font-size:28px;color:var(--text)}
+.stat span{color:var(--muted);font-size:14px}
+
+.traits{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px}
+.card h5{margin:0 0 6px;font-size:17px}
+.card p{margin:0;color:var(--muted);font-size:15px}
+
+.job{display:grid;grid-template-columns:150px 1fr;gap:24px;padding:24px 0;border-bottom:1px dashed var(--line)}
+.job:last-child{border-bottom:none}
+.job .when{color:var(--muted);font-size:14px}
+.job h5{margin:0;font-size:19px}
+.job .org{color:var(--muted);font-size:15px;margin-bottom:12px}
+.job h6{font-size:15px;margin:18px 0 6px;color:var(--text)}
+.job ul{margin:0;padding-left:20px}
+.job li{margin-bottom:6px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.chip{font-size:12.5px;background:var(--chip);color:var(--muted);padding:3px 10px;border-radius:999px}
+
+.pipeline{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:14px 0 4px;font-size:13px}
+.pipeline span{background:var(--accent-soft);color:var(--accent);padding:4px 10px;border-radius:6px}
+.pipeline i{color:var(--muted);font-style:normal}
+
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.project{display:flex;flex-direction:column}
+.project p{flex:1}
+.project .links{margin-top:14px;font-size:14px;display:flex;gap:14px}
+
+.edu-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;padding:14px 0;border-bottom:1px dashed var(--line)}
+.edu-row:last-child{border-bottom:none}
+.edu-row span{color:var(--muted);font-size:14px}
+
+.docs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.doc{display:flex;gap:16px;align-items:flex-start;color:var(--text)}
+.doc:hover{text-decoration:none;border-color:var(--accent)}
+.doc-icon{flex-shrink:0;font-size:12px;font-weight:600;color:var(--accent);background:var(--accent-soft);border-radius:8px;padding:10px 8px}
+
+.story p{max-width:720px}
+.story h5{font-size:17px;margin:26px 0 6px}
+
+footer{padding:40px 0 56px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+.theme-toggle{background:none;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:4px 10px;cursor:pointer;font-size:13px;flex-shrink:0}
+
+@media (max-width:640px){
+  nav ul{display:none}
+  header.hero{padding:56px 0 40px}
+  .job{grid-template-columns:1fr;gap:4px}
+}
+</style>
 </head>
 <body>
-    <header>
-        <img src="我.jfif" alt="吳明翰" id="profile-image">
-        <h1>吳明翰的個人網站</h1>
-    </header>
-        <div class="circle-container">
-        <div class="circle active-circle" data-target="about"
-         onclick="setActiveSection('about')">個人介紹</div>
-        <div class="circle" data-target="bio"
-         onclick="setActiveSection('bio')">自傳</div>
-        <div class="circle" data-target="experience"
-         onclick="setActiveSection('experience')">工作經驗</div>
-        <a href="論文完整版.pdf" class="circle" target="_blank">碩士論文</a> 
-        <a href="大學專題.pdf" class="circle" target="_blank">大學專題</a>
-        <a href="front page.html" class="circle" target="_blank">阿賢的家</a>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">吳明翰</a>
+    <ul>
+      <li><a href="#about">關於</a></li>
+      <li><a href="#experience">經歷</a></li>
+      <li><a href="#skills">技能</a></li>
+      <li><a href="#projects">專案</a></li>
+      <li><a href="#education">學歷</a></li>
+      <li><a href="#documents">文件</a></li>
+      <li><a href="#story">自傳</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeBtn" aria-label="切換深淺色">◐</button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="tag mono">Test Automation · Server Debug · Data Pipeline</div>
+    <h1>吳明翰</h1>
+    <h2>軟韌體測試工程師 @ 緯穎科技｜把重複的工作變成系統</h2>
+    <blockquote>雖然最終的結果非常重要，但在過程中不斷尋找答案的過程，才是主要累積經驗及學習的關鍵。</blockquote>
+    <div class="cta">
+      <a class="btn primary" href="#projects">看專案</a>
+      <a class="btn" href="https://github.com/minghan5487" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://pda.104.com.tw/profile/share/eWWYvYBsuklps5C4TzQrqCYG8wR4KxYW" target="_blank" rel="noopener">104 履歷</a>
     </div>
-    <main>
-        <section id="about" class="content-section">
-            <h2>關於我</h2>
-            <ul>
-                <p>我叫做吳明翰。</p>
-                <p>大學畢業於私立崑山科技大學，先工作兩年之餘深刻體會自身能力不足選擇進修研究所。</p>
-                <p>研究所畢業於國立高雄科技大學資訊管理學研究所。</p>
-                <p>個性屬於外向，常是團隊中的開心果，擅長人之間的交際，喜歡利用空閒時間瀏覽心理學的相關書籍、也會適當的運動培養自身的心境。</p>
-                <p>思維清晰，具有邏輯思考能力，對於細節的部分會進行自我的要求，樂於勇於挑戰。對待工作認真、負責很願意在團隊與公司中付出努力及貢獻。</p>
-            </ul>
-            <h3>恩師慈訓</h3>
-            <ul>
-                <p>雖然最終的結果非常重要，但在過程中不斷尋找答案的過程，才是主要累積經驗及學習的關鍵。因此我會保持這個信念，繼續讓自己努力的學習新事物。</p>
-            </ul>
-            <h3>專長</h3>
-            <ul>
-                <p>1. 程式語言：Python、Java、C++、C#</p>
-                <p>2. 統計軟體：SPSS、SmartPls</p>
-                <p>3. 擅長工具：Word、Excel、PowerPoint</p>
-                <p>4. 作業系統：Windows 10、Mac OS、MySQL、Linux</p>
-            </ul>
-        </section>
-        <section id="bio" class="content-section">
-            <h2>自傳</h2>
-            <h3>【關於我 - 沒嘗試前不要說自己做不到】</h3>
-            <p>學士畢業於崑山科技大學，資訊管理學系。
-            <p>畢業後先工作兩年後進修</p>
-            <p>碩士畢業於國立高雄科技大學，資訊管理系研究所。</p>
-            <p>我很喜歡閱讀心理學書籍，這讓我更了解人性和溝通技巧，同時我也通過運動保持身心健康，這些都使我在工作中能夠保持高效和穩定。</p>
-            <p>我性格開朗，擅長與人溝通，常在團隊中扮演溝通者。</p>
-            <p>我喜歡從中協調，作為一個橋樑並且解決雙方的問題，進而達到雙贏的局面。</p>
+  </div>
+</header>
 
-            <p>就學中體會到了人外有人，在歷經許多課業挫折時，我一度快要放棄了自己。</p>
-            <p>我遇到了一個啟蒙導師，告誡著我還有與我分享世界之大，不要因為這點挫折而放棄。</p>
-            <p>而我在高職時期選擇就讀資訊科，不為了別的，只為了可以想出<span style="color: red;">破解被鎖起來的電腦</span>。<img src="電腦鎖住.gif" alt="電腦鎖住.GIF" width="60"></p>
-            <p>或許這只是一個微小的種子，但就因為這顆種子，我選擇在資訊這個領域越走越遠。</p>
-            <p>在高職時期，我也被導師指派擔任班長一職，帶領著班級奪到了許多亮眼的稱號。也讓我體會到如何在人與人之間達到平和，以及溝通的方式。</p>
+<section id="about">
+  <div class="wrap">
+    <h3 class="mono">ABOUT</h3>
+    <h4 class="title">從修一顆 IC，到打造測試自動化平台</h4>
+    <div class="stats">
+      <div class="stat"><b>4–5 年</b><span>伺服器產業經驗</span></div>
+      <div class="stat"><b>10+ 支</b><span>串接的自動化管線程式</span></div>
+      <div class="stat"><b>20+ 項</b><span>盤點重構的正式環境服務</span></div>
+      <div class="stat"><b>97%</b><span>IC 級維修良率</span></div>
+    </div>
+    <div class="traits" style="margin-top:22px">
+      <div class="card"><h5>追根究柢</h5><p>統計數字對不上時，回頭檢查判定邏輯與公式來源，而不是只修表面結果。</p></div>
+      <div class="card"><h5>重視變更風險</h5><p>調整正式環境前先乾跑模擬、備份並驗證，確保任何變更都可回復。</p></div>
+      <div class="card"><h5>主動自動化</h5><p>看到團隊反覆人工查庫、整理報表，就把它做成排程系統與自動推播。</p></div>
+      <div class="card"><h5>溝通協調</h5><p>兩次部門搬遷擔任現場核心協調，負責跨單位溝通與人力調度。</p></div>
+    </div>
+  </div>
+</section>
 
-            <h3>【大學】</h3>
-            <p>我畢業於崑山科技大學，資訊管理系。</p>
-            <p>在大學期間，我參與了一個與自身家庭行業相關的專題研究，負責資料與數據收集與整合，並與業主協商。</p>
-            <p>過濾不重要的資訊，還有重要的資訊彙整製作成簡報會報給我的組員。</p>
-            <p>這段經歷不僅讓我學到了大量的專業知識，重點的擷取，網頁的設計、美觀，也提升了我的溝通和協作能力。</p>
+<section id="experience">
+  <div class="wrap">
+    <h3 class="mono">EXPERIENCE</h3>
+    <h4 class="title">工作經歷</h4>
 
-            <h3>【研究所】</h3>
-            <p>畢業於高雄科技大學商務資訊應用系研究所。</p>
-            <p>在碩士期間，我深入研究了決策樹和高級算法的應用，掌握了利用數據量化和數據處理的技巧。</p>
-            <p>我使用Scikit-Learn等機器學習框架進行模型構建和預測，並通過自學進一步提升了程式能力。</p>
-            <p>在第二學年，我專注於碩士論文，研究虛擬貨幣市場，學習市場交易方法，並通過學習SMC了解市場的交易機制。</p>
-            
-            <h3>【興趣嘗試】</h3>
-            <p>透過使用Solidity編寫智能合約，主要撰寫EVM體系的智能合約，以及參考Github上面前輩的案例進行修改參數。</p>
-            <p>將智能合約部署於區塊鏈後，驗證合約之源代碼公布至區塊鏈瀏覽器。</p>
-            <p>遇到的問題：</p>
-            <p> 合約安全的部分：練習這個初步為合約部屬練習，資安問題存在滿大的漏洞。</p>
-            <p> 合約代幣顯示錯誤：初步判定與網站調用合約時計算的方式不同。</p> 
-        </section>
-        <section id="experience" class="content-section">
-            <h2>工作經驗</h2>           
-            <h3>【第一份工作-緯穎科技維修技術員】</h3>
-            <ul>
-                <p>之前任職於RMA部門，操作BGA更換不良IC。</p>
-                <p>並操作X-RAY游離輻射機器檢查產品焊接情況。</p>
-                <p>操作顯微鏡微調CPU針腳。</p>
-                <p>利用Allegro軟體查看點位是否會造成短路。</p>
-                <p>我在日常工作中積極尋找提高IC更換良率和減少WIP的方法，並協助工程師製作相應的載具和鋼板以及制定SOP。</p>
-                <p>我還熟練使用焊接工具和三用電錶，進行簡單的電路測量，並在面對客戶審查時提供正確的信息。</p>
-            </ul>
-            <h3>【第二份工作-在緯穎科技擔任失效分析工程師的經歷】</h3>
-            <ul>
-                <h4 class="job-title">網路架設與維護</h4>
-                <p>迄今已執行超過 11 個專案的網路架設與維運</p>
-                <p>使用 Cisco / Edge-Core / Wedge100/400 等設備進行路由器與交換器設定</p>
-                <p>負責跨部門專案網路規劃、路徑設計與系統連線測試</p>
-                <p>日常維護測試環境網路狀態，協助除錯與穩定性改善</p>
-                    
-                <h5 class="job-title">測試及驗證</h5>
-                <p>支援各專案測試流程，排除包含「測試Fail」、「測試不跑」等異常狀況</p>
-                <p>使用 Linux 與 Python 修改各專案的硬體設定與 Test Code</p>
-                <p>與RD及LLM團隊進行 FPGA、NIC card 等硬體與系統驗證</p>
-                <p>參與BFT與ST階段環境架設與測試調整</p>
+    <div class="job">
+      <div class="when mono">2024/10 – 現在</div>
+      <div>
+        <h5>軟韌體測試工程師</h5>
+        <div class="org">緯穎科技服務股份有限公司｜台南</div>
 
-                <h6 class="job-title">個人專案與維修改善</h6>
-                <p>主導與建置專案機台，從架設、測試、數據回報至客戶驗收全程執行</p>
-                <p>結合電表與測試工具提升維修良率，有效降低PCB報廢率</p>
-                <p>協助專案退件進行初步驗證與問題排除（FW相容性、硬體診斷等）</p>
-                <p>定期與客戶報告維修狀況與分析結果</p>
+        <h6>測試工程自動化平台</h6>
+        <div class="pipeline mono">
+          <span>原始 log</span><i>→</i><span>場次重建</span><i>→</i><span>失敗定位</span><i>→</i><span>指標統計</span><i>→</i><span>報表 / Teams 推播</span>
+        </div>
+        <ul>
+          <li><strong>每日自動化資料管線：</strong>自動解析站台原始 log，串接十餘支程式，具階段失敗偵測，全程無人工介入。</li>
+          <li><strong>報表與自動推播：</strong>建置總覽儀表板、專案明細、SN 明細、失敗定位、工作量統計共 5 個報表頁；以 Teams Webhook 推播日報（跑完率、重測次數、重跑浪費工時），取代人工查庫整理報表。</li>
+          <li><strong>判定邏輯重構：</strong>設計測試場次與 SN 生命週期規則，改以官方場次結果判定成敗，消除統計誤判，並統一各頁指標公式與四捨五入規則。</li>
+          <li><strong>服務健康監控與自動復原：</strong>定期掃描排程、常駐服務與掛載狀態並自動告警；修正自身報告被誤判為新異常的連續假警報缺陷，並延伸覆蓋雲端同步管線。</li>
+          <li><strong>正式環境盤點與重構：</strong>盤點 20 餘項排程、常駐與容器化服務依賴，以程式還原呼叫鏈，找出失效排程、重複腳本與孤兒進入點；目錄重組先乾跑驗證，數量不符即整批中止。</li>
+          <li><strong>地端智慧問答系統：</strong>規則引擎分層輸出結論、依據與下一步，整合歷史統計、故障排除手冊與 PDF 頁面搜尋；曾實作地端 LLM + RAG（含知識庫檢索、FAQ 自動生成與人工審核回饋），後依資料治理規範下架封存。</li>
+        </ul>
 
-                <h6 class="job-title">跨部門協調與特殊經歷</h6>
-                <p>參與兩次部門遷移專案，擔任現場核心協調角色</p>
-                <p>負責跨單位溝通、人力調度與網路環境建置</p>
-                <p>現場領導搬遷流程與即時處理突發問題，確保作業順利完成</p>
-            </ul>
-        </section>
-    </main>
-    <footer>
-        <img src="感謝.gif" alt="感謝.GIF" width="300">
+        <h6>伺服器測試驗證與 Debug</h6>
+        <ul>
+          <li><strong>Meta 平台：</strong>BMC bring-up 與 debug，透過 BMC 執行 power on/off、查看 sensor 與 SEL、SOL console、更新韌體，配合 Rework／換料定位問題。</li>
+          <li><strong>AWS 平台：</strong>於 OS 端檢查 PCIe、GPU 與 Driver，搭配壓力與效能測試，判斷問題屬於網路、PCIe、Driver 或 FW 層。</li>
+          <li>處理 Function、Stress 與 SI/PI 問題；參與 BFT、ST 階段測試環境架設。</li>
+        </ul>
+
+        <h6>測試環境網路建置</h6>
+        <ul>
+          <li>使用 Cisco、Edge-Core、Wedge100/400 設定路由器與交換器，負責跨部門專案網路規劃與連線測試。</li>
+          <li>兩次部門遷移擔任現場核心協調，負責跨單位溝通、人力調度與網路環境建置。</li>
+        </ul>
+        <div class="chips"><span class="chip">Python</span><span class="chip">MS SQL</span><span class="chip">Linux</span><span class="chip">Container</span><span class="chip">Teams Webhook</span><span class="chip">BMC</span><span class="chip">PCIe</span><span class="chip">TCP/IP</span></div>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when mono">2020/4 – 2022/9</div>
+      <div>
+        <h5>產品維修人員</h5>
+        <div class="org">緯穎科技服務股份有限公司 台南分公司</div>
+        <ul>
+          <li>操作 BGA 機台拆換伺服器 IC，以 X-ray 檢查錫球、氣泡與外觀異常，顯微鏡微調 CPU 針腳。</li>
+          <li>排除 BGA 機台突發問題並調整參數；提供載具與鋼片製作數據，與工程師共同制定 SOP。</li>
+          <li>維持日常維修 WIP 低於 5%、良率 97%；客戶稽核時提供維修流程與數據說明。</li>
+        </ul>
+        <div class="chips"><span class="chip">BGA</span><span class="chip">X-ray</span><span class="chip">PCBA</span><span class="chip">Cadence Allegro</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h3 class="mono">SKILLS</h3>
+    <h4 class="title">專長</h4>
+    <div class="skills">
+      <div class="card"><h5>程式語言</h5><p>Python、C++、JavaScript、MS SQL</p></div>
+      <div class="card"><h5>自動化與維運</h5><p>Linux / Windows、排程與常駐服務、容器化服務、Teams Webhook、服務健康監控</p></div>
+      <div class="card"><h5>伺服器與硬體</h5><p>BMC、SEL / Sensor、PCIe、GPU Driver、SI/PI、PCBA / FPGA 失效分析</p></div>
+      <div class="card"><h5>網路</h5><p>TCP/IP、VLAN、DHCP、SSH、Firewall、Cisco、Edge-Core、Wedge100/400</p></div>
+      <div class="card"><h5>AI 與資料分析</h5><p>scikit-learn、RAG、地端 LLM 部署、Claude</p></div>
+      <div class="card"><h5>量化研究</h5><p>SPSS、SmartPLS、問卷設計、樣本統計分析</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h3 class="mono">PROJECTS</h3>
+    <h4 class="title">個人專案</h4>
+    <div class="projects">
+      <div class="card project">
+        <h5>股票查詢平台</h5>
+        <p>整合網頁爬蟲、資料處理、視覺化與網頁建置，提供股票交易與資訊查詢，計算資產、購買總成本、平均成本與報酬率。</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">Web Scraping</span><span class="chip">Visualization</span></div>
+        <div class="links"><a href="https://github.com/minghan5487/money" target="_blank" rel="noopener">原始碼 →</a></div>
+      </div>
+      <div class="card project">
+        <h5>股市走勢預測</h5>
+        <p>以機器學習決策樹將市場數據量化並預測走勢，規劃與股票查詢平台整合，提供趨勢預測與快速查閱。</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">scikit-learn</span><span class="chip">Decision Tree</span></div>
+        <div class="links"><a href="https://github.com/minghan5487/ML" target="_blank" rel="noopener">原始碼 →</a></div>
+      </div>
+      <div class="card project">
+        <h5>大學專題與碩士論文</h5>
+        <p>大學專題「阿賢的家」網站；碩士論文以工作要求－資源模式探討遠距工作者的工作績效。</p>
+        <div class="chips"><span class="chip">HTML</span><span class="chip">SPSS</span><span class="chip">SmartPLS</span></div>
+        <div class="links"><a href="files/thesis.pdf" target="_blank" rel="noopener">論文 PDF →</a><a href="files/capstone.pdf" target="_blank" rel="noopener">專題 PDF →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <h3 class="mono">EDUCATION</h3>
+    <h4 class="title">學歷與證照</h4>
+    <div class="card">
+      <div class="edu-row"><div><strong>國立高雄科技大學</strong>　資訊管理學系 碩士</div><span class="mono">2022/9 – 2024/6</span></div>
+      <div class="edu-row"><div><strong>崑山科技大學</strong>　資訊管理學系 學士</div><span class="mono">2015/9 – 2019/6</span></div>
+    </div>
+    <div class="chips" style="margin-top:16px">
+      <span class="chip">丙級電腦軟體應用技術士</span>
+      <span class="chip">EEC 企業電子化助理規劃師</span>
+      <span class="chip">TQC-DK 電子商務概論</span>
+      <span class="chip">英文：閱讀中等</span>
+    </div>
+  </div>
+</section>
+
+<section id="documents">
+  <div class="wrap">
+    <h3 class="mono">DOCUMENTS</h3>
+    <h4 class="title">文件下載</h4>
+    <div class="docs">
+      <a class="card doc" href="files/thesis.pdf" target="_blank" rel="noopener">
+        <span class="doc-icon mono">PDF</span>
+        <div><h5>碩士論文（完整版）</h5><p>以工作要求－資源模式探討遠距工作者的工作績效｜SPSS、SmartPLS 量化研究</p></div>
+      </a>
+      <a class="card doc" href="files/capstone.pdf" target="_blank" rel="noopener">
+        <span class="doc-icon mono">PDF</span>
+        <div><h5>大學專題製作</h5><p>崑山科技大學 資訊管理學系｜專題研究與網站建置</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="story" class="story">
+  <div class="wrap">
+    <h3 class="mono">STORY</h3>
+    <h4 class="title">自傳</h4>
+    <h5>從修一顆 IC 開始</h5>
+    <p>我在緯穎 RMA 部門負責伺服器 IC 級維修，每天操作 BGA 與 X-ray，並用 Cadence Allegro 確認線路點位。這段經驗讓我對伺服器硬體有很具體的理解，也養成先找根因再動手的習慣。</p>
+    <h5>碩士：學會用資料說話</h5>
+    <p>為了補足資料分析能力，我進入高科大資管所，從問卷設計、樣本蒐集到以 SPSS 與 SmartPLS 驗證研究模型，完整走過一次量化研究流程。課餘自學 Python 與 scikit-learn，做出股票查詢與股價預測等個人專案，這是我開始大量寫程式的起點。</p>
+    <h5>回到緯穎：把重複的工作變成系統</h5>
+    <p>畢業後我回到緯穎擔任軟韌體測試工程師，發現團隊花大量時間人工查庫、整理報表，於是從零建置測試工程自動化平台。過程中我最在意兩件事：資料正確性，以及變更安全。</p>
+    <h5>下一步</h5>
+    <p>我希望專注在測試開發與自動化領域，結合對硬體的理解與程式能力，做出讓團隊真正省時間的工具。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 吳明翰</span>
+    <span><a href="https://github.com/minghan5487" target="_blank" rel="noopener">github.com/minghan5487</a></span>
+  </div>
+</footer>
+
 <script>
-    function setActiveSection(sectionId) {
-    const sections = document.querySelectorAll('.content-section');
-    sections.forEach(section => {
-        section.classList.remove('active');
-    });
-    const target = document.getElementById(sectionId);
-    if (target) {
-        target.classList.add('active');
-        target.scrollIntoView({ behavior: 'smooth' }); 
-    }
-    const circles = document.querySelectorAll('.circle');
-    circles.forEach(circle => {
-        circle.classList.remove('active-circle');
-    });
-    const activeBtn = document.querySelector(
-        `.circle[data-target="${sectionId}"]`
-    );
-    if (activeBtn) {
-        activeBtn.classList.add('active-circle');
-    }
-}
-setActiveSection('about');
+(function(){
+  var root=document.documentElement, btn=document.getElementById('themeBtn');
+  try{var t=localStorage.getItem('theme'); if(t) root.setAttribute('data-theme',t);}catch(e){}
+  btn.addEventListener('click',function(){
+    var dark = root.getAttribute('data-theme')==='dark' ||
+      (!root.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+    var next = dark ? 'light' : 'dark';
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem('theme',next);}catch(e){}
+  });
+})();
 </script>
-    </footer>
 </body>
 </html>
