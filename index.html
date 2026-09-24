@@ -39,6 +39,8 @@ nav ul a{color:var(--muted)}
 nav ul a:hover{color:var(--text);text-decoration:none}
 
 header.hero{padding:88px 0 64px}
+.hero-grid{display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:center}
+.avatar{width:220px;height:220px;border-radius:50%;object-fit:cover;object-position:50% 30%;border:4px solid var(--surface);box-shadow:0 0 0 2px var(--accent),0 12px 32px rgba(0,0,0,.12)}
 .hero .tag{display:inline-block;font-size:13px;color:var(--accent);background:var(--accent-soft);padding:4px 10px;border-radius:999px;margin-bottom:18px}
 .hero h1{font-size:clamp(34px,6vw,52px);line-height:1.2;margin:0 0 10px}
 .hero h2{font-size:clamp(18px,3vw,22px);font-weight:500;color:var(--muted);margin:0 0 28px}
@@ -103,7 +105,9 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 
 @media (max-width:640px){
   nav ul{display:none}
-  header.hero{padding:56px 0 40px}
+  header.hero{padding:40px 0 40px}
+  .hero-grid{grid-template-columns:1fr;gap:24px}
+  .avatar{width:140px;height:140px}
   .job{grid-template-columns:1fr;gap:4px}
 }
 </style>
@@ -127,7 +131,9 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 </nav>
 
 <header class="hero" id="top">
-  <div class="wrap">
+  <div class="wrap hero-grid">
+    <img class="avatar" src="photo.jpg" alt="吳明翰" width="220" height="220">
+    <div>
     <div class="tag mono">Test Automation · Server Debug · Data Pipeline</div>
     <h1>吳明翰</h1>
     <h2>軟韌體測試工程師 @ 緯穎科技｜把重複的工作變成系統</h2>
@@ -136,6 +142,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       <a class="btn primary" href="#projects">看專案</a>
       <a class="btn" href="https://github.com/minghan5487" target="_blank" rel="noopener">GitHub</a>
       <a class="btn" href="https://pda.104.com.tw/profile/share/eWWYvYBsuklps5C4TzQrqCYG8wR4KxYW" target="_blank" rel="noopener">104 履歷</a>
+    </div>
     </div>
   </div>
 </header>
