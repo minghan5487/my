@@ -56,7 +56,8 @@ section h4.title{font-size:26px;margin:0 0 28px}
 
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:8px}
 .stat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px}
-.stat b{display:block;font-size:28px;color:var(--text)}
+.stat b{display:block;font-size:24px;line-height:1.3;color:var(--text)}
+.lead-in{margin:0 0 8px;color:var(--muted);font-size:15px}
 .stat span{color:var(--muted);font-size:14px}
 
 .traits{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
@@ -152,10 +153,10 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     <h3 class="mono">ABOUT</h3>
     <h4 class="title">從修一顆 IC，到打造測試自動化平台</h4>
     <div class="stats">
-      <div class="stat"><b>4–5 年</b><span>伺服器產業經驗</span></div>
-      <div class="stat"><b>10+ 支</b><span>串接的自動化管線程式</span></div>
-      <div class="stat"><b>20+ 項</b><span>盤點重構的正式環境服務</span></div>
-      <div class="stat"><b>97%</b><span>IC 級維修良率</span></div>
+      <div class="stat"><b>1 小時 → 5 分鐘</b><span>每日報表產出，每月省約 20 工時</span></div>
+      <div class="stat"><b>3–5 分鐘</b><span>服務異常自動發現，不必等人工巡檢</span></div>
+      <div class="stat"><b>14 個</b><span>Meta、AWS 伺服器測試專案</span></div>
+      <div class="stat"><b>97%</b><span>IC 級維修良率，WIP 低於 5%</span></div>
     </div>
     <div class="traits" style="margin-top:22px">
       <div class="card"><h5>追根究柢</h5><p>統計數字對不上時，回頭檢查判定邏輯與公式來源，而不是只修表面結果。</p></div>
@@ -182,19 +183,20 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
           <span>原始 log</span><i>→</i><span>場次重建</span><i>→</i><span>失敗定位</span><i>→</i><span>指標統計</span><i>→</i><span>報表 / Teams 推播</span>
         </div>
         <ul>
-          <li><strong>每日自動化資料管線：</strong>自動解析站台原始 log，串接十餘支程式，具階段失敗偵測，全程無人工介入。</li>
-          <li><strong>報表與自動推播：</strong>建置總覽儀表板、專案明細、SN 明細、失敗定位、工作量統計共 5 個報表頁；以 Teams Webhook 推播日報（跑完率、重測次數、重跑浪費工時），取代人工查庫整理報表。</li>
-          <li><strong>判定邏輯重構：</strong>設計測試場次與 SN 生命週期規則，改以官方場次結果判定成敗，消除統計誤判，並統一各頁指標公式與四捨五入規則。</li>
-          <li><strong>服務健康監控與自動復原：</strong>定期掃描排程、常駐服務與掛載狀態並自動告警；修正自身報告被誤判為新異常的連續假警報缺陷，並延伸覆蓋雲端同步管線。</li>
-          <li><strong>正式環境盤點與重構：</strong>盤點 20 餘項排程、常駐與容器化服務依賴，以程式還原呼叫鏈，找出失效排程、重複腳本與孤兒進入點；目錄重組先乾跑驗證，數量不符即整批中止。</li>
-          <li><strong>地端智慧問答系統：</strong>規則引擎分層輸出結論、依據與下一步，整合歷史統計、故障排除手冊與 PDF 頁面搜尋；曾實作地端 LLM + RAG（含知識庫檢索、FAQ 自動生成與人工審核回饋），後依資料治理規範下架封存。</li>
+          <li><strong>每日自動化資料管線：</strong>自動解析站台原始 log，每日新增逾 100 筆測試場次資料，串接場次重建、失敗定位、指標統計、報表產出與部署等十餘支程式，具階段失敗偵測，全程無人工介入。</li>
+          <li><strong>報表與自動推播：</strong>建置總覽儀表板、專案明細、SN 明細、失敗定位、工作量統計共 5 個報表頁，涵蓋部門全數 10～20 個專案；以 Teams Webhook 推播日報（跑完率、重測次數、重跑浪費工時）。報表產出由每日專人約 1 小時縮短至約 5 分鐘確認，每月約節省 20 個工時。</li>
+          <li><strong>判定邏輯重構：</strong>設計測試場次與 SN 生命週期規則（測項編號回跳視為新場次、同編號重試不重複計數、排除背景監控雜訊），改以官方場次結果判定成敗，消除統計誤判，並統一各頁指標公式與四捨五入規則。</li>
+          <li><strong>服務健康監控與自動復原：</strong>定期掃描排程、常駐服務與掛載狀態，異常時自動推播，多數異常可於發生後 3～5 分鐘內掌握；修正自身報告被誤判為新異常的連續假警報缺陷，並延伸覆蓋雲端同步管線告警。</li>
+          <li><strong>正式環境盤點與重構：</strong>盤點 20 餘項排程、常駐與容器化服務依賴，以程式還原呼叫鏈，找出失效排程、重複腳本與孤兒進入點；目錄重組先乾跑驗證，數量不符即整批中止，通過後自動備份並經語法檢查才落地。</li>
+          <li><strong>地端智慧問答系統：</strong>規則引擎分層輸出結論、依據、下一步與參考資源，整合歷史統計、故障排除手冊全文與 PDF 頁面搜尋，已完成建置並近期開放部門使用，持續以自問自答擴充知識庫。先前曾實作地端 LLM + RAG 版本（本地部署模型、知識庫檢索、FAQ 自動生成與人工審核回饋），後依資料治理規範完整下架封存。</li>
         </ul>
 
         <h6>伺服器測試驗證與 Debug</h6>
+        <p class="lead-in">負責 Meta 與 AWS 伺服器產品的測試驗證與異常排除，累計支援兩平台合計 14 個專案，每日處理 5～10 件異常。</p>
         <ul>
           <li><strong>Meta 平台：</strong>BMC bring-up 與 debug，透過 BMC 執行 power on/off、查看 sensor 與 SEL、SOL console、更新韌體，配合 Rework／換料定位問題。</li>
           <li><strong>AWS 平台：</strong>於 OS 端檢查 PCIe、GPU 與 Driver，搭配壓力與效能測試，判斷問題屬於網路、PCIe、Driver 或 FW 層。</li>
-          <li>處理 Function、Stress 與 SI/PI 問題；參與 BFT、ST 階段測試環境架設。</li>
+          <li>處理 Function、Stress 與 SI/PI 問題；進行 PCBA 與 FPGA 失效分析及電性修復以降低報廢率；參與 BFT、ST 階段測試環境架設。</li>
         </ul>
 
         <h6>測試環境網路建置</h6>
@@ -243,16 +245,16 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     <h4 class="title">個人專案</h4>
     <div class="projects">
       <div class="card project">
-        <h5>股票查詢平台</h5>
-        <p>整合網頁爬蟲、資料處理、視覺化與網頁建置，提供股票交易與資訊查詢，計算資產、購買總成本、平均成本與報酬率。</p>
-        <div class="chips"><span class="chip">Python</span><span class="chip">Web Scraping</span><span class="chip">Visualization</span></div>
+        <h5>台股查詢與交易試算平台</h5>
+        <p>Flask 網站，串接臺灣證券交易所 OpenAPI：首頁顯示加權指數與成交量排行，個股頁有收盤行情、本益比、殖利率、股價淨值比、即時五檔與歷史走勢，並可試算買賣價位的利潤與報酬率。原本以爬蟲抓 Yahoo 股價，網站改版後失效，改接官方 OpenAPI 並加上快取。資料層、交易邏輯與路由分層，網頁與命令列工具共用同一套規則。</p>
+        <div class="chips"><span class="chip">Flask</span><span class="chip">TWSE OpenAPI</span><span class="chip">twstock</span><span class="chip">Plotly</span><span class="chip">Bootstrap 5</span></div>
         <div class="links"><a href="https://github.com/minghan5487/money" target="_blank" rel="noopener">原始碼 →</a></div>
       </div>
       <div class="card project">
-        <h5>股市走勢預測</h5>
-        <p>以機器學習決策樹將市場數據量化並預測走勢，規劃與股票查詢平台整合，提供趨勢預測與快速查閱。</p>
-        <div class="chips"><span class="chip">Python</span><span class="chip">scikit-learn</span><span class="chip">Decision Tree</span></div>
-        <div class="links"><a href="https://github.com/minghan5487/ML" target="_blank" rel="noopener">原始碼 →</a></div>
+        <h5>台股走勢預測</h5>
+        <p>預測 0050 成分股未來 20 個交易日漲跌：以股價、估值與市場廣度建立特徵，比較邏輯迴歸、隨機森林與梯度提升，採 walk-forward 逐年驗收並在訓練與測試間留空避免資訊洩漏。GitHub Actions 每個交易日自動下載資料、重新訓練並產生報告。另有明日收盤價預測頁，一開始直接預測股價 R² 為負，改為預測報酬率後修正。</p>
+        <div class="chips"><span class="chip">scikit-learn</span><span class="chip">Walk-forward</span><span class="chip">GitHub Actions</span><span class="chip">Flask</span><span class="chip">yfinance</span></div>
+        <div class="links"><a href="https://github.com/minghan5487/ML" target="_blank" rel="noopener">原始碼 →</a><a href="https://github.com/minghan5487/ML/blob/main/reports/latest.md" target="_blank" rel="noopener">每日報告 →</a></div>
       </div>
       <div class="card project">
         <h5>大學專題｜阿賢之家 麻油品牌網站</h5>
@@ -308,14 +310,30 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   <div class="wrap">
     <h3 class="mono">STORY</h3>
     <h4 class="title">自傳</h4>
-    <h5>從修一顆 IC 開始</h5>
-    <p>我在緯穎 RMA 部門負責伺服器 IC 級維修，每天操作 BGA 與 X-ray，並用 Cadence Allegro 確認線路點位。這段經驗讓我對伺服器硬體有很具體的理解，也養成先找根因再動手的習慣。</p>
+    <h5>關於我</h5>
+    <p>我是吳明翰，資訊管理背景出身，從伺服器維修做到軟韌體測試，現在主要在做測試資料的自動化。我的習慣是遇到問題先弄清楚根因再動手，數字對不上時會回頭查判定邏輯，而不是把表面結果改對就算了。個性上我算開朗好溝通，在團隊裡常扮演橋樑的角色。工作之外我喜歡閱讀心理學書籍與運動，前者讓我更懂得怎麼跟不同立場的人對話，後者讓我在高壓期間還能維持穩定。</p>
+
+    <h5>大學專題：第一次完整交付一個東西</h5>
+    <p>大學時我參與一個與自身家庭行業相關的專題，主題是麻油產業的品牌網站規劃與建置。我負責資料與數據的收集整合，並直接與業主溝通需求，把大量雜訊過濾掉，整理成組員能看懂的簡報再進行分工。這是我第一次完整走過「需求訪談、資料整理、網頁設計、成果報告」的流程，也讓我發現自己真正的興趣在於把混亂的資訊整理成可用的東西。</p>
+
     <h5>碩士：學會用資料說話</h5>
-    <p>為了補足資料分析能力，我進入高科大資管所，從問卷設計、樣本蒐集到以 SPSS 與 SmartPLS 驗證研究模型，完整走過一次量化研究流程。課餘自學 Python 與 scikit-learn，做出股票查詢與股價預測等個人專案，這是我開始大量寫程式的起點。</p>
-    <h5>回到緯穎：把重複的工作變成系統</h5>
-    <p>畢業後我回到緯穎擔任軟韌體測試工程師，發現團隊花大量時間人工查庫、整理報表，於是從零建置測試工程自動化平台。過程中我最在意兩件事：資料正確性，以及變更安全。</p>
-    <h5>下一步</h5>
-    <p>我希望專注在測試開發與自動化領域，結合對硬體的理解與程式能力，做出讓團隊真正省時間的工具。</p>
+    <p>為了補足資料分析能力，我進入高科大資管所。碩士論文以工作要求－資源模式探討遠距工作者的工作績效及其影響因素，從問卷設計、樣本蒐集、信效度檢驗到以 SPSS 與 SmartPLS 驗證研究模型，完整跑過一次量化研究的流程。這段訓練讓我習慣先問「這個數字怎麼算出來的、樣本有沒有被污染」，而不是直接相信報表。課餘我自學 Python 與 scikit-learn，把所學做成股票查詢與走勢預測的個人專案，這是我開始大量寫程式的起點。</p>
+
+    <h5>RMA 維修：把手弄髒的兩年半</h5>
+    <p>畢業後我進入緯穎 RMA 部門，負責伺服器板卡的 IC 級維修：操作 BGA 機台拆換不良 IC、以 X-ray 檢查錫球與氣泡、用顯微鏡微調 CPU 針腳，並以 Cadence Allegro 查看點位判斷短路風險。我不只把件修好，也會回頭找為什麼修不好：機台參數怎麼調才能讓 Sample 穩定、載具與鋼片規格要提供哪些數據、哪些手法應該寫進 SOP。這兩年半我把維修 WIP 維持在 5% 以下、良率 97%。這段經歷讓我對伺服器硬體有實際手感，後來做測試與 Debug 時，判斷問題落在哪一層會比別人快。</p>
+
+    <h5>轉任軟韌體測試工程師：從硬體走到系統</h5>
+    <p>碩士畢業後我回到緯穎，轉任軟韌體測試工程師，負責 Meta 與 AWS 伺服器產品的測試驗證與異常排除，兩個平台合計 14 個專案，每天大約處理 5 到 10 件異常。Meta 平台我做 BMC 驅動的 bring-up 與 debug；AWS 平台則多半從 OS 端檢查 PCIe、GPU 與 Driver，搭配壓力與效能測試，判斷問題落在網路、PCIe、Driver 還是 FW。測試環境的網路也由我負責，使用 Cisco、Edge-Core、Wedge100/400 設定路由器與交換器。</p>
+
+    <h5>測試工程自動化平台：把重複的工作變成系統</h5>
+    <p>我發現部門花了大量時間在人工查資料庫、整理報表，同一份數字每天有人重算一次，因此從零建置了測試工程自動化平台。用 Python 搭配 MS SQL 與 Linux 排程，自動解析站台原始 log、每日新增逾 100 筆測試場次資料，十餘支程式接力執行並具備階段失敗偵測，產出五個報表頁並以 Teams 推播日報。導入前每天要專人花約一小時整理報表，現在只需約五分鐘確認，每個月省下約 20 個工時。</p>
+    <p>這個專案讓我學最多的是資料正確性與變更安全。統計數字怪怪的時候，追下去才發現是判定邏輯的問題，所以我重新設計了場次與 SN 生命週期規則，誤判才真正消失。我也導入服務健康監控，多數異常在 3 到 5 分鐘內就會知道。動正式環境時，我一定先乾跑模擬、驗證比對次數，數量不符就整批中止，通過後自動備份並經語法檢查才落地。最後建置的地端智慧問答系統已完成、近期開放部門使用；先前實作的地端 LLM + RAG 版本，則依公司資料治理規範完整下架封存。</p>
+
+    <h5>跨部門協調</h5>
+    <p>我參與過兩次部門遷移，擔任現場核心協調角色，負責跨單位溝通、人力調度與網路環境建置，並即時處理突發狀況。這類工作技術含量不一定最高，但很吃溝通與事前規劃，也是我相對擅長的部分。</p>
+
+    <h5>個人專案與下一步</h5>
+    <p>工作之外我持續寫自己的專案：串接證交所 OpenAPI 的台股查詢平台，以及用決策樹、隨機森林做的股價走勢預測，並以 GitHub Actions 每天自動重新訓練；也把大學專題網站整體重做，並把碩士論文放上個人網站，原始碼都在 GitHub。接下來我希望專注在測試開發與自動化，結合對伺服器硬體的理解與程式能力，繼續做出真正能讓團隊省下時間的工具。</p>
   </div>
 </section>
 
