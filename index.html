@@ -82,7 +82,7 @@ section h4.title{font-size:26px;margin:0 0 28px}
 
 .skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
 
-.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;align-items:start}.project.feature{grid-column:1/-1}.feature-grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(210px,1fr);gap:4px 24px;align-items:start}.feature-stats{display:grid;gap:6px;align-content:start;margin-top:14px}.stat-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:.84rem;padding:7px 10px;border:1px solid var(--line);border-radius:8px;color:var(--muted)}.stat-row b{color:var(--text);font-variant-numeric:tabular-nums;white-space:nowrap}.stat-note{font-size:.76rem;color:var(--muted);margin:4px 2px 0;line-height:1.5}@media(max-width:760px){.feature-grid{grid-template-columns:1fr}}
 .project{display:flex;flex-direction:column}
 .project p{flex:1}
 .project .links{margin-top:14px;font-size:14px;display:flex;gap:14px}
@@ -297,13 +297,28 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
         <div class="chips"><span class="chip">Flask</span><span class="chip">TWSE OpenAPI</span><span class="chip">twstock</span><span class="chip">Plotly</span><span class="chip">Bootstrap 5</span></div>
         <div class="links"><a href="https://github.com/minghan5487/money" target="_blank" rel="noopener">原始碼 →</a></div>
       </div>
-      <div class="card project">
-        <h5>台股走勢預測</h5>
-        <p>預測 0050 成分股未來 20 個交易日走勢。特徵涵蓋技術指標、估值、市場廣度，以及法人買賣超、融資券與月營收等非價格資料（月營收以「公布日 + 45 天」對齊，避免前視偏誤）。採 anchored walk-forward 逐年驗收、訓練與測試之間留 20 日 embargo，每折並列「全猜多數類」基準與特徵消融，GitHub Actions 每個交易日自動重訓。</p>
-        <p><strong>價格方向模型的結論是負面的，而且我把它寫在 README 第一段。</strong>整體準確率 56.2%，<strong>低於「全猜上漲」的 57.0%</strong>；五折 AUC 0.578 / 0.571 / 0.532 / 0.579 / <strong>0.498</strong>，最近一折低於隨機。加入台股實際交易成本（手續費、證交稅、滑價，年化拖累 8.10%）回測後，策略年化 +21~24%，<strong>輸給完全不交易的等權買進持有 +29.9%</strong>——選股有毛超額報酬，但不夠付手續費。</p>
-        <p><strong>同一套管線換一個標籤則得到正面結果。</strong>改預測「未來 20 日波動度會不會放大」後，AUC 0.747、準確率 68.0%（基準 50.1%），模型最有把握的前 10% 準確率約 85%。為了確認這不是波動度均值回歸的免費午餐，我加了一條一行規則當對照組——真實資料上模型 85.4% 對一行規則 76.3%，五折全勝；而在我刻意注入波動群聚的合成資料上，一行規則反而勝出，這反過來驗證了對照組本身有效。但波動不提供方向，不能當買賣訊號。</p>
-        <p>過程中發現：三次執行相同程式碼，回測年化在 +21.2%~+24.5% 之間跳動，兩個基準卻完全相同。依序排除隨機種子、執行緒浮點歸約、管線本身（同檔案兩次跑出相同雜湊與十位小數相同的 AUC），最後加檢查步驟證實是上游資料改寫歷史值——252 檔中 50 檔在數分鐘內內容改變。意義不是「數字會跳」，而是<strong>選股決策對數值上可忽略的擾動並不穩健</strong>，因此所有報酬都以區間而非單一數字呈現。</p>
-        <p>能證明一個模型「沒有 edge」，跟做出 edge 一樣需要正確的驗證設計——這和我在公司做 AI 自動評測是同一套思維：先讓系統有能力否定自己，數字才有意義。</p>
+      <div class="card project feature">
+        <h5>台股走勢預測<span class="chip" style="margin-left:8px">個人專案</span></h5>
+        <div class="feature-grid">
+          <div class="feature-text">
+            <p>預測 0050 成分股未來 20 個交易日走勢。特徵涵蓋技術指標、估值、市場廣度，以及法人買賣超、融資券與月營收等非價格資料（月營收以「公布日 + 45 天」對齊，避免前視偏誤）。採 anchored walk-forward 逐年驗收、訓練與測試間留 20 日 embargo，每折並列「全猜多數類」基準與特徵消融，GitHub Actions 每個交易日自動重訓。</p>
+            <p><strong>價格方向的結論是負面的，而我把它寫在 README 第一段。</strong>準確率低於「全猜上漲」的基準，最近一折 AUC 低於隨機。加入台股實際交易成本回測後，策略輸給完全不交易的等權買進持有——選股有毛超額報酬，但不夠付手續費。</p>
+            <p><strong>同一套管線換一個標籤則得到正面結果。</strong>改預測「未來 20 日波動度會不會放大」，模型最有把握的前 10% 準確率約 85%。為確認這不是波動度均值回歸的免費午餐，我加了一條一行規則當對照組：真實資料上模型五折全勝，而在我刻意注入波動群聚的合成資料上一行規則反而勝出——這反過來驗證了對照組本身有效。但波動不提供方向，不能當買賣訊號。</p>
+            <p><strong>過程中最有價值的是一次排錯。</strong>三次執行相同程式碼，回測年化在 +21.2%~+24.5% 間跳動，兩個基準卻完全相同。依序排除隨機種子、執行緒浮點歸約、管線本身（同檔案兩次跑出相同雜湊與十位小數相同的 AUC），最後加檢查步驟證實是上游改寫歷史值：252 檔中 50 檔在數分鐘內內容改變。意義不是「數字會跳」，而是<strong>選股決策對數值上可忽略的擾動並不穩健</strong>，因此所有報酬都以區間呈現。</p>
+            <p>能證明一個模型「沒有 edge」，跟做出 edge 一樣需要正確的驗證設計——這和我在公司做 AI 自動評測是同一套思維：先讓系統有能力否定自己，數字才有意義。</p>
+          </div>
+          <aside class="feature-stats">
+            <div class="stat-row"><span>價格方向 準確率</span><b>56.2%</b></div>
+            <div class="stat-row"><span>　同期多數類基準</span><b>57.0%</b></div>
+            <div class="stat-row"><span>最近一折 AUC</span><b>0.498</b></div>
+            <div class="stat-row"><span>波動度 前10%把握</span><b>≈85%</b></div>
+            <div class="stat-row"><span>　一行規則對照組</span><b>76.3%</b></div>
+            <div class="stat-row"><span>交易成本 年化拖累</span><b>8.10%</b></div>
+            <div class="stat-row"><span>策略年化（扣成本）</span><b>+21~24%</b></div>
+            <div class="stat-row"><span>　買進持有對照</span><b>+29.9%</b></div>
+            <p class="stat-note">所有數字出自每日自動產生的報告，可在 repo 追溯。</p>
+          </aside>
+        </div>
         <div class="chips"><span class="chip">scikit-learn</span><span class="chip">Walk-forward</span><span class="chip">Backtesting</span><span class="chip">GitHub Actions</span><span class="chip">yfinance</span><span class="chip">FinMind</span></div>
         <div class="links"><a href="https://github.com/minghan5487/ML" target="_blank" rel="noopener">原始碼 →</a><a href="https://github.com/minghan5487/ML/blob/main/reports/latest.md" target="_blank" rel="noopener">每日報告 →</a></div>
       </div>
