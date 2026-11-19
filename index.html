@@ -82,7 +82,7 @@ section h4.title{font-size:26px;margin:0 0 28px}
 
 .skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
 
-.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;align-items:start}.project.feature{grid-column:1/-1}.feature-text p+p,section p+p{margin-top:12px}.feature-grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(210px,1fr);gap:4px 24px;align-items:start}.feature-stats{display:grid;gap:6px;align-content:start;margin-top:14px}.stat-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:.84rem;padding:7px 10px;border:1px solid var(--line);border-radius:8px;color:var(--muted)}.stat-row b{color:var(--text);font-variant-numeric:tabular-nums;white-space:nowrap}.stat-note{font-size:.76rem;color:var(--muted);margin:4px 2px 0;line-height:1.5}@media(max-width:760px){.feature-grid{grid-template-columns:1fr}}
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;align-items:start}.project.feature{grid-column:1/-1}.arch{position:relative;display:inline-block;margin-top:10px}.arch-btn{font:inherit;font-size:.8rem;color:var(--accent);background:none;border:1px solid var(--line);border-radius:999px;padding:4px 12px;cursor:pointer}.arch-btn:hover,.arch-btn:focus-visible{border-color:var(--accent)}.arch-btn::after{content:" \25B8";font-size:.7rem}.arch.open .arch-btn::after{content:" \25BE"}.arch-pop{position:absolute;left:0;top:calc(100% + 8px);width:min(380px,86vw);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;box-shadow:0 12px 34px rgba(0,0,0,.38);opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity .15s,transform .15s;z-index:50}.arch:hover .arch-pop,.arch:focus-within .arch-pop,.arch.open .arch-pop{opacity:1;visibility:visible;transform:none}.arch-pop svg{width:100%;height:auto;display:block}.arch-note{font-size:.76rem;color:var(--muted);line-height:1.65;margin-top:10px}@media(hover:none){.arch:hover .arch-pop{opacity:0;visibility:hidden}.arch.open .arch-pop{opacity:1;visibility:visible}}@media(max-width:760px){.arch-pop{left:50%;transform:translate(-50%,-4px)}.arch:hover .arch-pop,.arch:focus-within .arch-pop,.arch.open .arch-pop{transform:translate(-50%,0)}}.feature-text p+p,section p+p{margin-top:12px}.feature-grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(210px,1fr);gap:4px 24px;align-items:start}.feature-stats{display:grid;gap:6px;align-content:start;margin-top:14px}.stat-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:.84rem;padding:7px 10px;border:1px solid var(--line);border-radius:8px;color:var(--muted)}.stat-row b{color:var(--text);font-variant-numeric:tabular-nums;white-space:nowrap}.stat-note{font-size:.76rem;color:var(--muted);margin:4px 2px 0;line-height:1.5}@media(max-width:760px){.feature-grid{grid-template-columns:1fr}}
 .project{display:flex;flex-direction:column}
 .project p{flex:1}
 .project .links{margin-top:14px;font-size:14px;display:flex;gap:14px}
@@ -261,15 +261,13 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     <h3 class="mono">SKILLS</h3>
     <h4 class="title">專長</h4>
     <div class="skills">
-      <div class="card"><h5>LLM 應用</h5><p>提示詞設計與防幻覺約束、分層結構化輸出、地端模型部署、企業 AI 平台串流串接、多後端切換</p></div>
+      <div class="card"><h5>LLM 應用與檢索</h5><p>提示詞設計與防幻覺約束、分層結構化輸出、地端模型部署、企業 AI 平台串流串接、多後端切換；PPTX / DOCX / PDF 解析、IDF 加權檢索、查詢改寫、別名正規化、實體辨識</p></div>
       <div class="card"><h5>AI 評測</h5><p>自動出題、盲測作答、自動判級、命中率追蹤、人工回饋審核閉環</p></div>
-      <div class="card"><h5>檢索與知識庫</h5><p>PPTX / DOCX / PDF 解析、IDF 加權檢索、查詢改寫、別名正規化、實體辨識、規則引擎</p></div>
       <div class="card"><h5>程式與資料</h5><p>Python、Bash、SQL（PostgreSQL / MySQL / SQLite）、ETL、log 解析、KPI 統計</p></div>
       <div class="card"><h5>自動化與維運</h5><p>Linux / Windows、排程與常駐服務、容器化服務、Teams Webhook、服務健康監控</p></div>
-      <div class="card"><h5>伺服器與硬體</h5><p>BMC、SEL / Sensor、PCIe、GPU Driver、SI/PI、PCBA / FPGA 失效分析</p></div>
       <div class="card"><h5>網路</h5><p>TCP/IP、VLAN、DHCP、SSH、Firewall、Cisco、Edge-Core、Wedge100/400</p></div>
       <div class="card"><h5>機器學習與評估</h5><p>scikit-learn、walk-forward 驗證、embargo 防洩漏、基準線對照、特徵重要度分析</p></div>
-      <div class="card"><h5>量化研究</h5><p>SPSS、SmartPLS、問卷設計、樣本統計分析</p></div>
+      
     </div>
   </div>
 </section>
@@ -280,16 +278,18 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     <h4 class="title">專案</h4>
     <div class="projects">
       <div class="card project">
-        <h5>地端 AI 維修問答與自動評測系統<span class="chip" style="margin-left:8px">公司專案</span></h5>
+        <h5>地端 AI 維修問答與自動評測系統<span class="chip" style="margin-left:8px">自主開發</span></h5>
         <p>伺服器維修站的地端 AI 系統，由我單人開發並維運。整合 74,823 筆歷史維修紀錄、17 份技術手冊（1,007 頁）與測試統計，以規則引擎做查詢理解、IDF 加權做手冊檢索、LLM 生成三段式回答，並以提示詞層約束不得輸出無來源的數字與零件位置。<strong>核心是自動評測：系統自動出題，作答時刻意只給手冊、不給維修紀錄，答完再與真實紀錄自動判級，已判 9.9 萬題、可比對的 7,029 題命中率 65%。</strong>答錯的題目直接成為手冊與現場實務落差的清單。</p>
         <div class="chips"><span class="chip">Python</span><span class="chip">llama.cpp</span><span class="chip">RAG</span><span class="chip">Prompt Engineering</span><span class="chip">PostgreSQL</span><span class="chip">systemd</span></div>
-        <div class="links"><span style="color:var(--muted);font-size:.85rem">公司內部系統，原始碼不公開；細節可於面試說明</span></div>
+        <div class="arch"><button class="arch-btn" type="button" aria-expanded="false" aria-controls="arch-qa">架構圖</button><div class="arch-pop" id="arch-qa" role="dialog" aria-label="架構圖"><svg viewBox="0 0 360 268" role="img" aria-label="地端 AI 維修問答與自動評測系統架構圖"><defs><marker id="ah" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto"><path d="M0,0 L6,2.5 L0,5 z" fill="var(--muted)"/></marker></defs><g font-size="10" fill="var(--text)"><text x="0" y="8" font-size="9" fill="var(--accent)">① 問答流程</text><rect x="0" y="14" width="114" height="32" rx="6" fill="none" stroke="var(--line)"/><text x="57" y="29" text-anchor="middle">維修紀錄</text><text x="57" y="41" text-anchor="middle" font-size="8.5" fill="var(--muted)">74,823 筆</text><rect x="123" y="14" width="114" height="32" rx="6" fill="none" stroke="var(--line)"/><text x="180" y="29" text-anchor="middle">技術手冊</text><text x="180" y="41" text-anchor="middle" font-size="8.5" fill="var(--muted)">17 份 / 1,007 頁</text><rect x="246" y="14" width="114" height="32" rx="6" fill="none" stroke="var(--line)"/><text x="303" y="33.5" text-anchor="middle">測試統計</text><line x1="180" y1="48" x2="180" y2="62" stroke="var(--muted)" marker-end="url(#ah)"/><rect x="40" y="64" width="280" height="30" rx="6" fill="none" stroke="var(--line)"/><text x="180" y="82.5" text-anchor="middle">規則引擎：查詢理解（別名正規化・實體辨識）</text><line x1="180" y1="96" x2="180" y2="110" stroke="var(--muted)" marker-end="url(#ah)"/><rect x="40" y="112" width="280" height="30" rx="6" fill="none" stroke="var(--line)"/><text x="180" y="130.5" text-anchor="middle">IDF 加權檢索 → 取出候選段落</text><line x1="180" y1="144" x2="180" y2="158" stroke="var(--muted)" marker-end="url(#ah)"/><rect x="40" y="160" width="280" height="32" rx="6" fill="none" stroke="var(--line)"/><text x="180" y="175" text-anchor="middle">地端 LLM（llama.cpp）三段式輸出</text><text x="180" y="187" text-anchor="middle" font-size="8.5" fill="var(--muted)">提示詞層約束：無來源的數字與零件位置不得輸出</text><text x="0" y="212" font-size="9" fill="var(--accent)">② 自動評測閉環</text><rect x="0" y="218" width="80" height="30" rx="6" fill="none" stroke="var(--line)"/><text x="40" y="236.5" text-anchor="middle">自動出題</text><line x1="82" y1="233" x2="94" y2="233" stroke="var(--muted)" marker-end="url(#ah)"/><rect x="96" y="218" width="86" height="30" rx="6" fill="none" stroke="var(--line)"/><text x="139" y="232" text-anchor="middle">盲測作答</text><text x="139" y="244" text-anchor="middle" font-size="8.5" fill="var(--muted)">只給手冊</text><line x1="184" y1="233" x2="196" y2="233" stroke="var(--muted)" marker-end="url(#ah)"/><rect x="198" y="218" width="74" height="30" rx="6" fill="none" stroke="var(--line)"/><text x="235" y="232" text-anchor="middle">自動判級</text><text x="235" y="244" text-anchor="middle" font-size="8.5" fill="var(--muted)">對真實紀錄</text><line x1="274" y1="233" x2="286" y2="233" stroke="var(--muted)" marker-end="url(#ah)"/><rect x="288" y="218" width="72" height="30" rx="6" fill="none" stroke="var(--line)"/><text x="324" y="232" text-anchor="middle">落差清單</text><text x="324" y="244" text-anchor="middle" font-size="8.5" fill="var(--muted)">回饋手冊</text></g></svg><p class="arch-note">評測刻意不給維修紀錄，答完才與真實紀錄比對，因此命中率量到的是「手冊本身夠不夠用」，而不是模型背答案的能力。</p></div></div>
+        <div class="links"><span style="color:var(--muted);font-size:.85rem">自主開發、公司未正式立案；運行於公司環境，原始碼不公開。細節可於面試說明</span></div>
       </div>
       <div class="card project">
-        <h5>測試專案自動生成工作台<span class="chip" style="margin-left:8px">公司專案</span></h5>
+        <h5>測試專案自動生成工作台<span class="chip" style="margin-left:8px">自主開發</span></h5>
         <p>把客戶測試計畫（Word／PDF／Excel）自動轉成整包可執行的測試專案：測項對應既有案例並附信心分數、指令依客戶 API 翻成程式碼、各料號基準設定與治具 3D 模型，真實計畫 102 個測項達秒級對應。採 git 式流程，推送時於記憶體解壓並驗證語法與交互參照，不通過即擋下；經 4 位獨立審查實測挑出 41 項問題並修正至 v6.0。</p>
         <div class="chips"><span class="chip">Python</span><span class="chip">AST / compile</span><span class="chip">YAML</span><span class="chip">SQLite</span><span class="chip">Three.js</span></div>
-        <div class="links"><span style="color:var(--muted);font-size:.85rem">公司內部系統，原始碼不公開</span></div>
+        <div class="arch"><button class="arch-btn" type="button" aria-expanded="false" aria-controls="arch-wb">架構圖</button><div class="arch-pop" id="arch-wb" role="dialog" aria-label="架構圖"><svg viewBox="0 0 360 250" role="img" aria-label="測試專案自動生成工作台架構圖"><defs><marker id="ah" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto"><path d="M0,0 L6,2.5 L0,5 z" fill="var(--muted)"/></marker></defs><g font-size="10" fill="var(--text)"><rect x="40" y="4" width="280" height="30" rx="6" fill="none" stroke="var(--line)"/><text x="180" y="22.5" text-anchor="middle">客戶測試計畫（Word / PDF / Excel）</text><line x1="180" y1="36" x2="180" y2="50" stroke="var(--muted)" marker-end="url(#ah)"/><rect x="40" y="52" width="280" height="32" rx="6" fill="none" stroke="var(--line)"/><text x="180" y="67" text-anchor="middle">測項抽取 → 比對既有案例庫</text><text x="180" y="79" text-anchor="middle" font-size="8.5" fill="var(--muted)">每個對應附信心分數（高 / 中 / 低）</text><line x1="180" y1="86" x2="180" y2="100" stroke="var(--muted)" marker-end="url(#ah)"/><text x="0" y="98" font-size="9" fill="var(--accent)">生成</text><rect x="0" y="102" width="114" height="34" rx="6" fill="none" stroke="var(--line)"/><text x="57" y="118" text-anchor="middle">指令翻譯</text><text x="57" y="130" text-anchor="middle" font-size="8.5" fill="var(--muted)">依客戶 API 產生程式碼</text><rect x="123" y="102" width="114" height="34" rx="6" fill="none" stroke="var(--line)"/><text x="180" y="118" text-anchor="middle">各料號基準設定</text><text x="180" y="130" text-anchor="middle" font-size="8.5" fill="var(--muted)">golden per PN</text><rect x="246" y="102" width="114" height="34" rx="6" fill="none" stroke="var(--line)"/><text x="303" y="118" text-anchor="middle">治具 3D 模型</text><text x="303" y="130" text-anchor="middle" font-size="8.5" fill="var(--muted)">Three.js</text><line x1="180" y1="138" x2="180" y2="152" stroke="var(--muted)" marker-end="url(#ah)"/><rect x="20" y="154" width="320" height="34" rx="6" fill="none" stroke="var(--line)"/><text x="180" y="170" text-anchor="middle">git 式推送：記憶體解壓 → AST / compile 檢查 + 交互參照</text><text x="180" y="182" text-anchor="middle" font-size="8.5" fill="var(--muted)">不通過即擋下，不落地</text><line x1="180" y1="190" x2="180" y2="204" stroke="var(--muted)" marker-end="url(#ah)"/><rect x="60" y="206" width="240" height="30" rx="6" fill="none" stroke="var(--line)"/><text x="180" y="220" text-anchor="middle">整包可執行的測試專案</text><text x="180" y="232" text-anchor="middle" font-size="8.5" fill="var(--muted)">真實計畫 102 個測項達秒級對應</text></g></svg><p class="arch-note">驗證在推送時於記憶體完成，語法或交互參照不過就擋下，錯誤的產出不會落地到專案資料夾。</p></div></div>
+        <div class="links"><span style="color:var(--muted);font-size:.85rem">自主開發、公司未正式立案；原始碼不公開</span></div>
       </div>
       <div class="card project">
         <h5>台股查詢與交易試算平台</h5>
@@ -429,6 +429,16 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     try{localStorage.setItem('theme',next);}catch(e){}
   });
 })();
+</script>
+
+<script>
+document.querySelectorAll(".arch").forEach(function(a){var b=a.querySelector(".arch-btn");
+  b.addEventListener("click",function(e){e.stopPropagation();var o=a.classList.contains("open");
+    document.querySelectorAll(".arch.open").forEach(function(x){x.classList.remove("open");x.querySelector(".arch-btn").setAttribute("aria-expanded","false");});
+    if(!o){a.classList.add("open");b.setAttribute("aria-expanded","true");}});});
+function closeArch(){document.querySelectorAll(".arch.open").forEach(function(x){x.classList.remove("open");x.querySelector(".arch-btn").setAttribute("aria-expanded","false");});}
+document.addEventListener("click",closeArch);
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closeArch();});
 </script>
 </body>
 </html>
