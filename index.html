@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>吳明翰｜測試自動化工程師</title>
+<title>吳明翰｜AI 應用工程師</title>
 <meta name="description" content="吳明翰｜軟韌體測試工程師，專注測試自動化、資料管線與伺服器 Debug。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -299,10 +299,12 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       </div>
       <div class="card project">
         <h5>台股走勢預測</h5>
-        <p>預測 0050 成分股未來 20 個交易日漲跌：以技術指標、估值與市場廣度建立特徵，比較邏輯迴歸、隨機森林與梯度提升，採 anchored walk-forward 逐年驗收、訓練與測試之間留 20 日 embargo 避免標籤洩漏，GitHub Actions 每個交易日自動重訓並產生報告。</p>
-        <p><strong>這個專案真正的成果是一組誠實的負面結論。</strong>五折 AUC 為 0.588 / 0.576 / 0.528 / 0.569 / <strong>0.507</strong>——最近一折已退化到接近隨機；整體準確率 55.9%，<strong>低於「全猜多數類」的 57.1%</strong>。特徵重要度顯示主導變數是市場回撤（市場層級、當日所有個股相同，重要度為次高特徵的 4 倍），代表模型學到的其實是市場擇時而非個股選擇，這也解釋了為何每日選出的前 10 名幾乎都是近期跌幅最深的股票。</p>
-        <p>我把這個結論寫進自動報告而不是藏起來。能證明一個模型「沒有 edge」，跟做出 edge 一樣需要正確的驗證設計——這和我在公司做 AI 自動評測是同一套思維。下一步是改用橫斷面標籤（同日與其他個股相比），把市場層級的訊號從目標中移除。</p>
-        <div class="chips"><span class="chip">scikit-learn</span><span class="chip">Walk-forward</span><span class="chip">GitHub Actions</span><span class="chip">Flask</span><span class="chip">yfinance</span></div>
+        <p>預測 0050 成分股未來 20 個交易日走勢。特徵涵蓋技術指標、估值、市場廣度，以及法人買賣超、融資券與月營收等非價格資料（月營收以「公布日 + 45 天」對齊，避免前視偏誤）。採 anchored walk-forward 逐年驗收、訓練與測試之間留 20 日 embargo，每折並列「全猜多數類」基準與特徵消融，GitHub Actions 每個交易日自動重訓。</p>
+        <p><strong>價格方向模型的結論是負面的，而且我把它寫在 README 第一段。</strong>整體準確率 56.2%，<strong>低於「全猜上漲」的 57.0%</strong>；五折 AUC 0.578 / 0.571 / 0.532 / 0.579 / <strong>0.498</strong>，最近一折低於隨機。加入台股實際交易成本（手續費、證交稅、滑價，年化拖累 8.10%）回測後，策略年化 +21~24%，<strong>輸給完全不交易的等權買進持有 +29.9%</strong>——選股有毛超額報酬，但不夠付手續費。</p>
+        <p><strong>同一套管線換一個標籤則得到正面結果。</strong>改預測「未來 20 日波動度會不會放大」後，AUC 0.747、準確率 68.0%（基準 50.1%），模型最有把握的前 10% 準確率約 85%。為了確認這不是波動度均值回歸的免費午餐，我加了一條一行規則當對照組——真實資料上模型 85.4% 對一行規則 76.3%，五折全勝；而在我刻意注入波動群聚的合成資料上，一行規則反而勝出，這反過來驗證了對照組本身有效。但波動不提供方向，不能當買賣訊號。</p>
+        <p>過程中發現：三次執行相同程式碼，回測年化在 +21.2%~+24.5% 之間跳動，兩個基準卻完全相同。依序排除隨機種子、執行緒浮點歸約、管線本身（同檔案兩次跑出相同雜湊與十位小數相同的 AUC），最後加檢查步驟證實是上游資料改寫歷史值——252 檔中 50 檔在數分鐘內內容改變。意義不是「數字會跳」，而是<strong>選股決策對數值上可忽略的擾動並不穩健</strong>，因此所有報酬都以區間而非單一數字呈現。</p>
+        <p>能證明一個模型「沒有 edge」，跟做出 edge 一樣需要正確的驗證設計——這和我在公司做 AI 自動評測是同一套思維：先讓系統有能力否定自己，數字才有意義。</p>
+        <div class="chips"><span class="chip">scikit-learn</span><span class="chip">Walk-forward</span><span class="chip">Backtesting</span><span class="chip">GitHub Actions</span><span class="chip">yfinance</span><span class="chip">FinMind</span></div>
         <div class="links"><a href="https://github.com/minghan5487/ML" target="_blank" rel="noopener">原始碼 →</a><a href="https://github.com/minghan5487/ML/blob/main/reports/latest.md" target="_blank" rel="noopener">每日報告 →</a></div>
       </div>
       <div class="card project">
@@ -388,7 +390,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     <p>我參與過兩次部門遷移，擔任現場核心協調角色，負責跨單位溝通、人力調度與網路環境建置，並即時處理突發狀況。這類工作技術含量不一定最高，但很吃溝通與事前規劃，也是我相對擅長的部分。</p>
 
     <h5>個人專案與下一步</h5>
-    <p>工作之外我持續寫自己的專案。台股走勢預測那個讓我學到最多的不是建模，是評估：我用 anchored walk-forward 加 embargo 做驗證，結果誠實告訴我最近一折 AUC 只有 0.507、準確率還輸給「全猜多數類」的基準，而特徵重要度指出主導變數是市場層級的回撤，代表它學到的是市場擇時不是選股。我把這個負面結論直接寫進每日自動報告裡，因為能證明模型沒有 edge，跟做出 edge 一樣需要正確的驗證設計。</p>
+    <p>工作之外我持續寫自己的專案。台股走勢預測那個讓我學到最多的不是建模，是評估。我用 anchored walk-forward 加 embargo 做驗證，結果誠實告訴我最近一折 AUC 只有 0.498、準確率 56.2% 還輸給「全猜上漲」的 57.0%；加入實際交易成本回測後，策略甚至輸給完全不交易。更有意思的是過程中我自己提過的兩個假設都被實驗推翻——我一度認定主導變數是市場層級的回撤、模型學到的是市場擇時，但特徵消融顯示那三個特徵的邊際貢獻只有 +0.015，推論不成立。我把推翻的過程也留在報告裡。改預測波動度後倒是得到正面結果（前 10% 把握約 85%），而且先用一條一行規則當對照組確認它不是免費午餐。能證明模型沒有 edge，跟做出 edge 一樣需要正確的驗證設計。</p>
     <p>接下來我希望轉任 AI 應用工程師，專注在企業內部的 LLM 導入、RAG 系統與模型評測。我不是從模型研究進入 AI，而是從一個很具體的現場問題開始，這讓我對「怎麼讓語言模型在有事實責任的場合被信任」特別有感。目前正在補強語意檢索（向量嵌入與重排序），把現有的字面檢索經驗銜接到完整的 RAG 技術棧。</p>
   </div>
 </section>
